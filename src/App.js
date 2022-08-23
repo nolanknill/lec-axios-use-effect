@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import Home from "./pages/Home/Home";
+import TvShows from './pages/TvShows/TvShows';
+import BeautifulForm from "./pages/BeautifulForm/BeautifulForm";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/tv-shows">TV Shows</Link></li>
+        <li><Link to="/beautiful-form">Form</Link></li>
+      </ul>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tv-shows" element={<TvShows />} />
+        <Route path="/tv-show/:tvShowId" element={<TvShows />} />
+        <Route path="/beautiful-form" element={<BeautifulForm />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;
